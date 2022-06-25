@@ -1,5 +1,5 @@
 // Blockchain difficulty
-const bcComplexity = "000000"
+const bcComplexity = "00000"
 // Block div to toggle class effects when hash mismatch
 const blockDiv = document.getElementsByClassName("block")[0];
 const bcComplex = document.getElementsByClassName("bcComplex")[0];
