@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web simple example - Blockchain</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+        integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
+
 <body>
     <nav class="navbar">
-        Blockchain Sample
-    </nav>
+        Blockchain Sample <small>[ <span class="bcComplex"></span> complex ]</small>
+     </nav>
     <main>
-        <p>Current blockchain complexity: <span class="bcComplex"></span></p>
-        <p>Last block took <span class="blockTime__seconds">0</span> seconds to mine</p>
         <div class="block">
             <div class="block_data">
                 <label for="block">Block</label>
-                <input type="text" name="block" id="block" value="1" readonly disabled>
+                <input type="number" name="block" id="block" value="1">
                 <label for="nonce">Nonce</label>
-                <input type="text" name="nonce" id="nonce" readonly disabled>
+                <input type="number" name="nonce" id="nonce" min="0">
                 <label for="data">Data</label>
                 <textarea name="data" id="data" cols="30" rows="10"></textarea>
-                <label for="currentHash"></label>
-                <input type="text" name="currentHash" id="currentHash" readonly disabled>
-                <label for="blockHash">Block Hash</label>
+                <label for="blockHash">Hash</label>
                 <input type="text" name="blockHash" id="blockHash" readonly disabled>
             </div>
             <div class="block_mine">
@@ -33,9 +33,11 @@
                     <img class="mine__loading" src="./loading.gif" alt="loading" srcset="">
                     Mine
                 </button>
+                <span class="mine__seconds"></span>
             </div>
         </div>
-    </main>
-    <script src="script.js"></script>
+        </root>
+        <script src="script.js"></script>
 </body>
+
 </html>

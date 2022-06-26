@@ -1,22 +1,22 @@
 // Blockchain difficulty
-const bcComplexity = "00000"
+const bcComplexity = "0000"
 // Block div to toggle class effects when hash mismatch
 const blockDiv = document.getElementsByClassName("block")[0];
 const bcComplex = document.getElementsByClassName("bcComplex")[0];
 const blockTime = document.getElementsByClassName("blockTime")[0];
 // HTML Elements
 const blockInput = document.getElementById('data');
-const currentHashInput = document.getElementById('currentHash');
 const blockHashInput = document.getElementById('blockHash');
 const nonceInput = document.getElementById('nonce');
 const mineButton = document.getElementById('mine');
 const mineButtonLoading = document.getElementsByClassName('mine__loading')[0];
-const blockTimeSeconds = document.getElementsByClassName('blockTime__seconds')[0];
+const blockTimeSeconds = document.getElementsByClassName('mine__seconds')[0];
 
 // Init bcComplex
 bcComplex.innerHTML  = bcComplexity;
 
 // Add listeners
+nonceInput.addEventListener('input', updateHashHandler)
 blockInput.addEventListener('input', updateHashHandler)
 mineButton.addEventListener('click', mineHandler)
 
@@ -26,15 +26,15 @@ function updateHashHandler () {
         // Enable mined button when block has content
         mineButton.disabled = false;
         // Check if current content is valid for the current block hash
-        currentHashInput.value = hashBlock(blockInput.value, nonceInput.value);
-        if (currentHashInput.value !== blockHashInput.value) 
-            blockWrong(true)
+        blockHashInput.value = hashBlock(blockInput.value, nonceInput.value);
+        if (!blockHashInput.value.startsWith(bcComplexity)) 
+            blockWrong(true);
         else
             blockWrong(false);
     } else {
         // No content no mining
         mineButton.disabled = true;
-        currentHashInput.value = ""
+        blockHashInput.value = ""
     }
 }
 
@@ -52,12 +52,11 @@ function  mineHandler () {
             blockHashInput.value = hashBlock(blockInput.value, nonce)
             if (blockHashInput.value.startsWith(bcComplexity)) {
                 // Nonce is valid. Hash starts with the blockchain required complexity
-                currentHashInput.value = blockHashInput.value;
+                blockHashInput.value = blockHashInput.value;
                 mined = true;
                 blockDiv.classList.add("block--ok")
                 blockDiv.classList.remove("block--error")
-                console.log(new Date() - startTime);
-                blockTimeSeconds.innerHTML = (new Date() - startTime)/1000;
+                blockTimeSeconds.innerHTML = `${(new Date() - startTime)/1000} sec`;
             }
             // Increase nonce and try again (Proof of work = Brute force)
             nonce++;

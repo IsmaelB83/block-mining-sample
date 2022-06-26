@@ -17,11 +17,11 @@ img, embed, object, video {
 }
 
 body {
-    font-size: 16   px;
     font-family: 'Lato', sans-serif;
     height: 100vh;
     display: flex;
     flex-direction: column;
+    text-align: left;
 }
 
 .navbar {
@@ -32,7 +32,9 @@ body {
 } 
 
 main {
-    padding: 20px;
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .block {
@@ -43,7 +45,7 @@ main {
     border-radius: 10px;
     padding: 1.5rem;
     margin-top: 1rem;
-    background-color: rgb(243, 199, 79);
+    background-color: rgb(223, 240, 216);
 }
 
 .block_data {
@@ -54,7 +56,11 @@ main {
 
 .block_mine {
     margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
     text-align: right;
+    align-items: flex-end;
+    gap: 10px;
 }
 
 .block_mine button {
@@ -63,11 +69,11 @@ main {
 }
 
 .block--error {
-    background-color: rgb(248, 90, 33);
+    background-color: rgb(250, 220, 220);
 }
 
 .block--ok {
-    background-color: greenyellow;
+    background-color: rgb(223, 240, 216);
 }   
 
 .mine__loading {
